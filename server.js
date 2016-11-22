@@ -10,8 +10,11 @@ var port = process.env.PORT || 8080
 
 
 // instructions
-app.get('/', function(req,res){
-  res.send("Katherine is better than trump")
+// set the view engine
+app.set('view engine', 'jade')
+app.set('views', (__dirname + '/views'))
+app.get('/',function(req,res){
+  res.render('index')
 })
 
 // new url path
@@ -23,7 +26,7 @@ app.get('/new/*', function (req,res) {
     // create new data base entry and return the new url etc
     createUrl(url, function(err,docs){
       tinyUrl = docs.ops[0].query
-      res.send({"original_url":url,"short_url": `https://little-url.herokuapp.com/${tinyUrl}` })
+      res.send({"original_url":url,"short_url": `https://so-short-so-url.herokuapp.com/${tinyUrl}` })
     })
   } else {
     res.send({"error": "Please provide URL in the correct format, see http://www.w3schools.com/html/html_urlencode.asp for help"})
