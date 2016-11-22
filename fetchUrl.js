@@ -1,5 +1,5 @@
 var mongo = require('mongodb').MongoClient
-var url = 'mongodb://localhost:27018/url-short'
+var url = process.env.MONGOLAB_URI
 
 // requires callback to use the find output
 
